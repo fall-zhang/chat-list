@@ -1,0 +1,5 @@
+{
+  "name": "WeChat Clone",
+  "description": "A simple WeChat-like chat interface with message history and real-time input.",
+  "requestFramePermissions": []
+}

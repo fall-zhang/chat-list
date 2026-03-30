@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  /* Custom scrollbar for the entire app */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #d1d1d1;
+    border-radius: 10px;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: #333333;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b1b1b1;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #444444;
+  }
+
+  /* Specific for the chat history to be even more subtle */
+  .chat-history::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .chat-history::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Custom scrollbar for textarea */
+  textarea::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  textarea::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+  }
+
+  .dark textarea::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Prevent layout shift when scrollbar appears */
+  textarea {
+    scrollbar-gutter: stable;
+  }
+}
