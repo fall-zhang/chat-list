@@ -18,7 +18,7 @@ function IndexComponent() {
           <MessageSquare size={40} className="text-[#07c160] opacity-80" />
         </div>
         <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">微信助手</h3>
-        <p className="text-sm text-gray-400 dark:text-gray-500 max-w-[200px] mx-auto">选择左侧聊天列表开始对话，或查看您的任务进度</p>
+        <p className="text-sm text-gray-400 dark:text-gray-500 max-w-50 mx-auto">选择左侧聊天列表开始对话，或查看您的任务进度</p>
       </motion.div>
     </div>
   );
