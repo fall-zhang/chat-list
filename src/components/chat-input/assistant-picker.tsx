@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import { motion } from 'motion/react';
-import { Assistant } from '../types';
-import { useLanguage } from '../context/LanguageContext';
+import { Assistant } from '@/types';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface AssistantPickerProps {
   assistants: Assistant[];

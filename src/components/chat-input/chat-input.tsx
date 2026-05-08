@@ -1,10 +1,10 @@
 import { useRef, useLayoutEffect, KeyboardEvent, useState, useEffect } from 'react';
 import { Mic, Smile, PlusCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Assistant } from '../types';
-import { useLanguage } from '../context/LanguageContext';
-import EmojiPicker from './EmojiPicker';
-import AssistantPicker from './AssistantPicker';
+import { Assistant } from '@/types';
+import { useLanguage } from '@/context/LanguageContext';
+import EmojiPicker from './emoji-picker';
+import AssistantPicker from './assistant-picker';
 
 interface ChatInputProps {
   inputValue: string;
@@ -14,7 +14,6 @@ interface ChatInputProps {
   onSelectAssistant?: (assistant: Assistant) => void;
 }
 
-const EMOJIS = ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜', '🤪', '🤨', '🧐', '🤓', '😎', '🤩', '🥳', '😏', '😒', '😞', '😔', '😟', '😕', '🙁', '☹️', '😣', '😖', '😫', '😩', '🥺', '😢', '😭', '😤', '😠', '😡', '🤬', '🤯', '😳', '🥵', '🥶', '😱', '😨', '😰', '😥', '😓', '🤗', '🤔', '🤭', '🤫', '🤥', '😶', '😐', '😑', '😬', '🙄', '😯', '😦', '😧', '😮', '😲', '🥱', '😴', '🤤', '😪', '😵', '🤐', '🥴', '🤢', '🤮', '🤧', '😷', '🤒', '🤕', '🤑', '🤠', '😈', '👿', '👹', '👺', '🤡', '👻', '💀', '☠️', '👽', '👾', '🤖', '🎃', '😺', '😸', '😹', '😻', '😼', '😽', '🙀', '😿', '😾'];
 
 export default function ChatInput({ 
   inputValue, 
@@ -131,7 +130,6 @@ export default function ChatInput({
             {showEmojiPicker && (
               <EmojiPicker 
                 ref={emojiPickerRef}
-                emojis={EMOJIS}
                 onSelectEmoji={addEmoji}
               />
             )}

@@ -1,11 +1,11 @@
 import { createFileRoute, useParams } from '@tanstack/react-router';
 import { useState, useEffect, useRef } from 'react';
-import ChatHeader from '../components/ChatHeader';
-import ChatMessage from '../components/ChatMessage';
-import ChatInput from '../components/ChatInput';
-import PinnedMessagesBar from '../components/PinnedMessagesBar';
-import { useChat } from '../hooks/useChat';
-import { Assistant } from '../types';
+import ChatHeader from '@/components/ChatHeader';
+import ChatMessage from '@/components/ChatMessage';
+import ChatInput from '@/components/chat-input/chat-input';
+import PinnedMessagesBar from '@/components/PinnedMessagesBar';
+import { useChat } from '@/hooks/useChat';
+import { Assistant } from '@/types';
 import { AnimatePresence } from 'motion/react';
 
 export const Route = createFileRoute('/chat/$chatId')({
