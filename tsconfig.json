@@ -18,8 +18,11 @@
     "strict": true,
     "strictNullChecks": true,
     "paths": {
-      "@/*": [
+      "./*": [
         "./*"
+      ],
+      "@/*": [
+        "./src/*"
       ]
     },
     "allowImportingTsExtensions": true,
