@@ -36,10 +36,10 @@ function ProfilePage() {
 
   const menuItems = [
     { icon: <CreditCard size={20} className="text-blue-500" />, label: t('service') },
-    { icon: <Package size={20} className="text-orange-500" />, label: t('favorites') },
-    { icon: <Heart size={20} className="text-red-500" />, label: t('moments') },
-    { icon: <Package size={20} className="text-blue-400" />, label: t('cards') },
-    { icon: <Package size={20} className="text-yellow-500" />, label: t('stickers') },
+    // { icon: <Package size={20} className="text-orange-500" />, label: t('favorites') },
+    // { icon: <Heart size={20} className="text-red-500" />, label: t('moments') },
+    // { icon: <Package size={20} className="text-blue-400" />, label: t('cards') },
+    // { icon: <Package size={20} className="text-yellow-500" />, label: t('stickers') },
   ];
 
   return (
@@ -51,7 +51,7 @@ function ProfilePage() {
       />
 
       <div className="mt-2 space-y-2">
-        <div className="bg-white dark:bg-[#191919] divide-y divide-gray-50 dark:divide-[#222222]">
+        {/* <div className="bg-white dark:bg-[#191919] divide-y divide-gray-50 dark:divide-[#222222]">
           {menuItems.slice(0, 1).map((item, idx) => (
             <ProfileMenuItem key={idx} icon={item.icon} label={item.label} />
           ))}
@@ -61,7 +61,7 @@ function ProfilePage() {
           {menuItems.slice(1).map((item, idx) => (
             <ProfileMenuItem key={idx} icon={item.icon} label={item.label} />
           ))}
-        </div>
+        </div> */}
 
         <div className="bg-white dark:bg-[#191919] divide-y divide-gray-50 dark:divide-[#222222]">
           {/* Theme Mode */}

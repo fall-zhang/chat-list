@@ -74,10 +74,10 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ msg, onToggleComplete, onTogg
     }
   };
 
-  const handlePin = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onTogglePin?.(msg.id);
-  };
+  // const handlePin = (e: React.MouseEvent) => {
+  //   e.stopPropagation();
+  //   onTogglePin?.(msg.id);
+  // };
 
   const formatTime = (seconds: number) => {
     const m = Math.floor(seconds / 60);
@@ -143,7 +143,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ msg, onToggleComplete, onTogg
         </AnimatePresence>
 
         {/* Pop-out Menu for User Messages (Now integrated with the side expansion) */}
-        <AnimatePresence>
+        {/* <AnimatePresence>
           {isExpanded && isUser && (
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -178,7 +178,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ msg, onToggleComplete, onTogg
               </div>
             </motion.div>
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
 
         <div 
           onClick={() => isUser && setIsExpanded(!isExpanded)}
@@ -272,16 +272,50 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ msg, onToggleComplete, onTogg
 
       {/* Checkbox for User Messages - Now on the left of bubble */}
       {isUser && (
-        <motion.button
-          layout
+        <button
           onClick={handleToggle}
-          animate={{ x: isExpanded ? -40 : 0 }}
-          className={`mt-2 flex-shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
+          className={`mt-2 flex-shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-300 relative ${
             msg.isCompleted 
               ? 'bg-[#07c160] border-[#07c160] scale-110 shadow-lg' 
               : 'border-gray-300 dark:border-gray-700 hover:border-[#07c160] hover:scale-110'
           }`}
         >
+          <AnimatePresence mode="wait">
+            {isExpanded && (
+              <motion.div
+                initial={{ opacity: 0, x: 0 }}
+                animate={{ opacity: 1, x: -10 }}
+                exit={{ opacity: 0, x: -200 }}
+                className="absolute right-full top-0 h-full flex items-center gap-2 pr-2 z-20"
+              >
+                <div className="flex gap-2">
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onTogglePin?.(msg.id);
+                      setIsExpanded(false);
+                    }}
+                    className={`w-8 h-8 rounded-full flex items-center justify-center shadow-md transition-all ${msg.isPinned ? 'bg-blue-500 text-white' : 'bg-white dark:bg-[#2a2a2a] text-gray-400 hover:text-blue-500'}`}
+                  >
+                    <Pin size={14} className={msg.isPinned ? 'fill-current' : ''} />
+                  </button>
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      // Mock deadline setting for now
+                      const tomorrow = new Date();
+                      tomorrow.setDate(tomorrow.getDate() + 1);
+                      onSetDeadline?.(msg.id, tomorrow);
+                      setIsExpanded(false);
+                    }}
+                    className={`w-8 h-8 rounded-full flex items-center justify-center shadow-md transition-all ${msg.deadline ? 'bg-orange-500 text-white' : 'bg-white dark:bg-[#2a2a2a] text-gray-400 hover:text-orange-500'}`}
+                  >
+                    <Calendar size={14} />
+                  </button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
           <AnimatePresence mode="wait">
             {msg.isCompleted ? (
               <motion.div
@@ -298,16 +332,14 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ msg, onToggleComplete, onTogg
               </motion.div>
             )}
           </AnimatePresence>
-        </motion.button>
+        </button>
       )}
 
       {/* Long Press Menu (Legacy, now replaced by click menu but kept for compatibility) */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {false && (
           <>
-            <div 
-              className="fixed inset-0 z-40" 
-            />
+            <div className="fixed inset-0 z-40" />
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -333,7 +365,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ msg, onToggleComplete, onTogg
             </motion.div>
           </>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </motion.div>
   );
 };
